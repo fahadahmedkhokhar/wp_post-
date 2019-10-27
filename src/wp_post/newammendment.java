@@ -31,14 +31,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  *
  * @author Awais
  */
-public class main extends javax.swing.JFrame {
+public class newammendment extends javax.swing.JFrame {
 
     /**
      * Creates new form main
      */
     ChromeDriver driver;
-
-    public main() {
+    static int tit_num =0;
+    public newammendment() {
         initComponents();
 
     }
@@ -75,14 +75,16 @@ public class main extends javax.swing.JFrame {
         count = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         delay2 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Wordpress Poster ");
+        jLabel1.setText("Wordpress Poster N");
 
         jLabel2.setText("Path");
 
-        path.setText("E:\\Projects\\new format");
+        path.setText("E:\\Projects\\Data\\new format");
         path.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pathActionPerformed(evt);
@@ -132,12 +134,26 @@ public class main extends javax.swing.JFrame {
 
         delay2.setText("4");
 
+        jLabel12.setText("Num of Titles:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel7))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel8)))
+                        .addGap(408, 408, 408))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -150,31 +166,22 @@ public class main extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel12))
                                 .addGap(30, 30, 30)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(path)
                                     .addComponent(um)
                                     .addComponent(mail)
                                     .addComponent(pass)
-                                    .addComponent(url, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+                                    .addComponent(url)
+                                    .addComponent(delay)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(delay)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(84, 84, 84)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel7))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel8)))
-                        .addGap(367, 367, 367)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +202,11 @@ public class main extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addGap(45, 45, 45)
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel12)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -265,11 +276,11 @@ public class main extends javax.swing.JFrame {
         try {
             fetch_files();
         } catch (IOException ex) {
-            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(newammendment.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InvalidFormatException ex) {
-            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(newammendment.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException ex) {
-            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(newammendment.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -294,20 +305,21 @@ public class main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newammendment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newammendment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newammendment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(newammendment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new main().setVisible(true);
+                new newammendment().setVisible(true);
             }
         });
     }
@@ -320,6 +332,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -329,6 +342,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField mail;
     private javax.swing.JPasswordField pass;
     private javax.swing.JTextField path;
@@ -405,6 +419,7 @@ String conveert(String main_content) {
     
     private void fetch_files() throws IOException, InvalidFormatException, InterruptedException {
         int files = 1;
+        int total_title = Integer.parseInt(jTextField1.getText());
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
@@ -413,6 +428,7 @@ String conveert(String main_content) {
         int k = 1;
         int st = Integer.parseInt(starting.getText());
         try {
+            
             File folder = new File(path.getText());
             File[] listOfFiles = folder.listFiles();
             int j = Integer.parseInt(um.getText());
@@ -452,17 +468,23 @@ String conveert(String main_content) {
                             }
                           
                         }
-                        
+                        total =0;
+                        for (XWPFParagraph paragraph : paragraphList) {
+                            total++;
+                            if(paragraph.getText().contains("Promotional Title"))
+                            {
+                                tit_num = total;
+                                
+                            }
+                        }
 
                        System.out.println("421 total : " + total);
                         int tile_iterator = 0;
+                        int title_num =0,meta_num;
                         boolean doo = false;
                         outerloop:
                         for (XWPFParagraph paragraph : paragraphList) {
-
-                            if (tile_iterator == 0) {
-                               // System.out.println("429 GETTEXTttttttttttttttt :  " + paragraph.getText());
-                                System.out.println("430 getselectd:  " + type.getSelectedItem());
+                         if (tile_iterator == 0) {
                                 tile_iterator++;
 
                                 if (!type.getSelectedItem().equals(paragraph.getText())) {
@@ -475,11 +497,11 @@ String conveert(String main_content) {
                                                 
                                                 i++;
 
-                                                if (i == 6 + j) {//4 For the num of titles
+                                                if (i == (tit_num+2) + j) {//4 For the num of titles
                                                   //  k=1;
                                                     title = paragraphh.getText();
                                                     System.out.println(" 443 title"+ title);
-                                                    if (j >= 4) { //9
+                                                    if (j >= total_title-1) { //9
                                                         j = 0;
                                                         break outerloop;
 
@@ -498,10 +520,10 @@ String conveert(String main_content) {
                             if (!"".equals(paragraph.getText())) {
                                 i++;
 
-                                if (i == 6 + j) {//5
+                                if (i == (tit_num+2) + j) {//5
                                     title = paragraph.getText();
                                     System.out.println("Title neechy wala"+title);
-                                    if (j >= 4) {   //9
+                                    if (j >= total_title-1) {   //9
                                         j = 0;
                                     } else {
                                         j++;
@@ -509,7 +531,6 @@ String conveert(String main_content) {
                                     }
                                 }
                             }
-
                         }
                         //meta description
                         int meta_iterate = 1;
