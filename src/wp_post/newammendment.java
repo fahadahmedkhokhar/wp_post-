@@ -37,7 +37,8 @@ public class newammendment extends javax.swing.JFrame {
      * Creates new form main
      */
     ChromeDriver driver;
-    static int tit_num =0;
+    static int tit_num = 0;
+
     public newammendment() {
         initComponents();
 
@@ -357,13 +358,13 @@ String conveert(String main_content) {
         for (int ii = 0; ii < splitted.length; ii++) {
             if ((splitted[ii]).contains("http://")) { // use more statements for
 
-                System.out.println("After conversion of <ahref     "+splitted[ii]); //just checking the output
+                System.out.println("After conversion of <ahref     " + splitted[ii]); //just checking the output
                 link = "<a href=\"" + splitted[ii] + "\">" + splitted[ii] + "</a>";
 
             }
             if ((splitted[ii]).contains("https://")) { // use more statements for
 
-                System.out.println("After conversion of <ahref     "+splitted[ii]); //just checking the output
+                System.out.println("After conversion of <ahref     " + splitted[ii]); //just checking the output
                 link = "<a href=\"" + splitted[ii] + "\">" + splitted[ii] + "</a>";
 
             }
@@ -378,15 +379,14 @@ String conveert(String main_content) {
         for (int ii = 0; ii < splitted.length; ii++) {
             if ((splitted[ii]).contains("http://")) { // use more statements for
 
-                 System.out.println("Output of link "+splitted[ii]); //just checking the output
+                System.out.println("Output of link " + splitted[ii]); //just checking the output
                 link = "<a href=\"" + splitted[ii] + "\">" + splitted[ii] + "</a>";
 
             }
             if ((splitted[ii]).contains("https://")) { // use more statements for
 
-                System.out.println("Output of link "+splitted[ii]); //just checking the output
+                System.out.println("Output of link " + splitted[ii]); //just checking the output
                 link = "<a href=\"" + splitted[ii] + "\">" + splitted[ii] + "</a>";
-                
 
             }
         }
@@ -394,29 +394,27 @@ String conveert(String main_content) {
 
     }
 
-    
     String conveert3rd(String main_content) {
         String[] splitted = main_content.split(" ");
         String link = null;
         for (int ii = 0; ii < splitted.length; ii++) {
             if ((splitted[ii]).contains("http://")) { // use more statements for
 
-                 System.out.println("Output of link "+splitted[ii]); //just checking the output
+                System.out.println("Output of link " + splitted[ii]); //just checking the output
                 link = "<a href=\"" + splitted[ii] + "\">" + splitted[ii] + "</a>";
 
             }
             if ((splitted[ii]).contains("https://")) { // use more statements for
 
-                System.out.println("Output of link "+splitted[ii]); //just checking the output
+                System.out.println("Output of link " + splitted[ii]); //just checking the output
                 link = "<a href=\"" + splitted[ii] + "\">" + splitted[ii] + "</a>";
-                
 
             }
         }
         return main_content.subSequence(0, 36) + " " + link;
 
     }
-    
+
     private void fetch_files() throws IOException, InvalidFormatException, InterruptedException {
         int files = 1;
         int total_title = Integer.parseInt(jTextField1.getText());
@@ -428,7 +426,7 @@ String conveert(String main_content) {
         int k = 1;
         int st = Integer.parseInt(starting.getText());
         try {
-            
+
             File folder = new File(path.getText());
             File[] listOfFiles = folder.listFiles();
             int j = Integer.parseInt(um.getText());
@@ -452,9 +450,9 @@ String conveert(String main_content) {
                     Thread.sleep(t * 1000);
                     String title = "", meta_description = "", main_content = "", tags = "";
                     if (file.isFile()) {
-                       // System.out.println("406"+file.toString());
+                        // System.out.println("406"+file.toString());
                         XWPFDocument xdoc = new XWPFDocument(OPCPackage.open(file));
-                        
+
                         List<XWPFParagraph> paragraphList = xdoc.getParagraphs();
 
                         //  System.out.println(paragraphList.get(4).getText());
@@ -464,44 +462,43 @@ String conveert(String main_content) {
 
                             if (!"".equals(paragraph.getText())) {
                                 total++;
-                            
+
                             }
-                          
+
                         }
-                        total =0;
+                        total = 0;
                         for (XWPFParagraph paragraph : paragraphList) {
                             total++;
-                            if(paragraph.getText().contains("Promotional Title"))
-                            {
+                            if (paragraph.getText().contains("Promotional Title")) {
                                 tit_num = total;
-                                
+
                             }
                         }
 
-                       System.out.println("421 total : " + total);
+                        System.out.println("421 total : " + total);
                         int tile_iterator = 0;
-                        int title_num =0,meta_num;
+                        int title_num = 0, meta_num;
                         boolean doo = false;
                         outerloop:
                         for (XWPFParagraph paragraph : paragraphList) {
-                         if (tile_iterator == 0) {
+                            if (tile_iterator == 0) {
                                 tile_iterator++;
 
                                 if (!type.getSelectedItem().equals(paragraph.getText())) {
-                                    {                                        
-                                        
+                                    {
+
                                         doo = true;
                                         for (XWPFParagraph paragraphh : paragraphList) {
-                                            
+
                                             if (!"".equals(paragraphh.getText())) {
-                                                
+
                                                 i++;
 
-                                                if (i == (tit_num+2) + j) {//4 For the num of titles
-                                                  //  k=1;
+                                                if (i == (tit_num + 2) + j) {//4 For the num of titles
+                                                    //  k=1;
                                                     title = paragraphh.getText();
-                                                    System.out.println(" 443 title"+ title);
-                                                    if (j >= total_title-1) { //9
+                                                    System.out.println(" 443 title" + title);
+                                                    if (j >= total_title - 1) { //9
                                                         j = 0;
                                                         break outerloop;
 
@@ -520,10 +517,10 @@ String conveert(String main_content) {
                             if (!"".equals(paragraph.getText())) {
                                 i++;
 
-                                if (i == (tit_num+2) + j) {//5
+                                if (i == (tit_num + 2) + j) {//5
                                     title = paragraph.getText();
-                                    System.out.println("Title neechy wala"+title);
-                                    if (j >= total_title-1) {   //9
+                                    System.out.println("Title neechy wala" + title);
+                                    if (j >= total_title - 1) {   //9
                                         j = 0;
                                     } else {
                                         j++;
@@ -534,38 +531,62 @@ String conveert(String main_content) {
                         }
                         //meta description
                         int meta_iterate = 1;
+
+                        total = 1;
+                         
+                        for (XWPFParagraph paragraph : paragraphList) {
+                              if (!"".equals(paragraph.getText())) {
+                            total++;
+                            if (paragraph.getText().contains("Use below as description 1 at a time")) {
+                                meta_iterate = total;
+
+                            }
+                        }
+                           }
+                        System.out.println("Meta_iterate    "+meta_iterate);
                         Random r = new Random();
-                        int low = 12;   //16
-                         int high = 13; //17
+                        int low = meta_iterate + 2;   //16
+                        int high = meta_iterate + 3; //17
                         int result = r.nextInt(high - low) + low;
 //                        System.out.println(result);
+                            meta_iterate = 1;
                         for (XWPFParagraph paragraph : paragraphList) {
-                           // System.out.println("Data"+paragraph.getText());
+                            // System.out.println("Data"+paragraph.getText());
                             if (!"".equals(paragraph.getText())) {
-                                    
+
                                 meta_iterate++;
-                                
+
                                 if (meta_iterate == result) {
                                     meta_description = paragraph.getText();
-                                    System.out.println("meta Description:   "+meta_description);
+                                    System.out.println("meta Description:   " + meta_description);
                                 }
                             }
 
                         }
-                        System.out.println("meta    "+meta_iterate);
+                        System.out.println("meta    " + meta_iterate);
                         //paragraph
-                      
+
+                        total =0;
+                        for (XWPFParagraph paragraph : paragraphList) {
+
+                            if (!"".equals(paragraph.getText())) {
+                                total++;
+
+                            }
+
+                        }
+                        
                         int main_iterate = 1;
                         String url_line = "";
                         String remaining = "";
-                        String first = "";      
-                        String query= "";
+                        String first = "";
+                        String query = "";
                         for (XWPFParagraph paragraph : paragraphList) {
 
                             if (!"".equals(paragraph.getText())) {
                                 if (main_iterate == total) {
                                     tags = paragraph.getText();
-                                  //  System.out.println("tags"+ tags);
+                                    //  System.out.println("tags"+ tags);
                                     break;
                                 }
 
@@ -581,31 +602,28 @@ String conveert(String main_content) {
                                 } else if (main_iterate >= 14) {//17
                                     if (paragraph.getText().contains("Purchase this premium research report at")) {
                                         String a = paragraph.getText();
-                                        System.out.println("full    "+a);
+                                        System.out.println("full    " + a);
                                         a = conveert2nd(a);
-                                        System.out.println("pur     "+a);
+                                        System.out.println("pur     " + a);
                                         remaining = remaining + "\n \n" + a;
 
-                                        }else if (paragraph.getText().contains("Ask your report related queries at:")) {
-                                       System.out.println(main_iterate);
-                                       
+                                    } else if (paragraph.getText().contains("Ask your report related queries at:")) {
+                                        System.out.println(main_iterate);
+
                                         String a = paragraph.getText();
-                                         System.out.println("full    "+a);
+                                        System.out.println("full    " + a);
                                         query = conveert3rd(a);
-                                        System.out.println("pur     "+a);                               
-                                    } 
-                                    
-                                    
-                                    else {
+                                        System.out.println("pur     " + a);
+                                    } else {
                                         remaining = remaining + "\n \n" + paragraph.getText();
                                     }
-                                }                                   
-                                
+                                }
+
                             }
 
                         }
                         System.out.println("----------------------------------------------------------------");
-                        main_content = first + "\n \n" + url_line + "\n" + remaining + "\n \n"+query;
+                        main_content = first + "\n \n" + url_line + "\n" + remaining + "\n \n" + query;
                         //     System.out.println(main_content);
 
                         driver.findElement(By.name("post_title")).sendKeys(title);
@@ -619,7 +637,7 @@ String conveert(String main_content) {
 
                         List<WebElement> allcategoreis = driver.findElements(By.xpath("//label[@class='selectit']"));
 
-                        System.out.println("Select category     "+type.getSelectedItem());
+                        System.out.println("Select category     " + type.getSelectedItem());
                         for (WebElement w : allcategoreis) {
                             if (w.getText().equals(type.getSelectedItem())) {
                                 w.click();
