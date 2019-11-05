@@ -207,7 +207,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="path">
           <Properties>
-            <Property name="text" type="java.lang.String" value="E:\u005cProjects\u005cData\u005cnew format" containsInvalidXMLChars="true"/>
+            <Property name="text" type="java.lang.String" value="D:\u005cProjects\u005cData\u005cnew format" containsInvalidXMLChars="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pathActionPerformed"/>
@@ -268,6 +268,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="fahad123@123"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
@@ -286,6 +289,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="https://thetajphotography.in/dummy2/wp-admin/post-new.php"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="urlActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
@@ -333,6 +339,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="5"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

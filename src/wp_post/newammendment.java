@@ -85,7 +85,7 @@ public class newammendment extends javax.swing.JFrame {
 
         jLabel2.setText("Path");
 
-        path.setText("E:\\Projects\\Data\\new format");
+        path.setText("D:\\Projects\\Data\\new format");
         path.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pathActionPerformed(evt);
@@ -107,6 +107,11 @@ public class newammendment extends javax.swing.JFrame {
         jLabel6.setText("Password");
 
         pass.setText("fahad123@123");
+        pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Login and Start !");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +123,11 @@ public class newammendment extends javax.swing.JFrame {
         jLabel7.setText("URL");
 
         url.setText("https://thetajphotography.in/dummy2/wp-admin/post-new.php");
+        url.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                urlActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Delay");
 
@@ -136,6 +146,8 @@ public class newammendment extends javax.swing.JFrame {
         delay2.setText("4");
 
         jLabel12.setText("Num of Titles:");
+
+        jTextField1.setText("5");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -288,6 +300,14 @@ public class newammendment extends javax.swing.JFrame {
     private void pathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pathActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pathActionPerformed
+
+    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passActionPerformed
+
+    private void urlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urlActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_urlActionPerformed
 
     /**
      * @param args the command line arguments
@@ -533,23 +553,23 @@ String conveert(String main_content) {
                         int meta_iterate = 1;
 
                         total = 1;
-                         
-                        for (XWPFParagraph paragraph : paragraphList) {
-                              if (!"".equals(paragraph.getText())) {
-                            total++;
-                            if (paragraph.getText().contains("Use below as description 1 at a time")) {
-                                meta_iterate = total;
 
+                        for (XWPFParagraph paragraph : paragraphList) {
+                            if (!"".equals(paragraph.getText())) {
+                                total++;
+                                if (paragraph.getText().contains("Use below as description 1 at a time")) {
+                                    meta_iterate = total;
+
+                                }
                             }
                         }
-                           }
-                        System.out.println("Meta_iterate    "+meta_iterate);
+                        System.out.println("Meta_iterate    " + meta_iterate);
                         Random r = new Random();
                         int low = meta_iterate + 2;   //16
                         int high = meta_iterate + 3; //17
                         int result = r.nextInt(high - low) + low;
 //                        System.out.println(result);
-                            meta_iterate = 1;
+                        meta_iterate = 1;
                         for (XWPFParagraph paragraph : paragraphList) {
                             // System.out.println("Data"+paragraph.getText());
                             if (!"".equals(paragraph.getText())) {
@@ -566,7 +586,7 @@ String conveert(String main_content) {
                         System.out.println("meta    " + meta_iterate);
                         //paragraph
 
-                        total =0;
+                        total = 0;
                         for (XWPFParagraph paragraph : paragraphList) {
 
                             if (!"".equals(paragraph.getText())) {
@@ -575,12 +595,14 @@ String conveert(String main_content) {
                             }
 
                         }
-                        
+
                         int main_iterate = 1;
                         String url_line = "";
                         String remaining = "";
                         String first = "";
                         String query = "";
+                        System.out.println("Low =   " + low);   //13
+                        System.out.println("High =  " + high);  // 14
                         for (XWPFParagraph paragraph : paragraphList) {
 
                             if (!"".equals(paragraph.getText())) {
@@ -591,15 +613,17 @@ String conveert(String main_content) {
                                 }
 
                                 main_iterate++;
-
-                                if (paragraph.getText().contains("Access Report ")) {
+                                if (paragraph.getText().contains("1st Para from the report content will come below")||paragraph.getText().contains("(1st Paragraph from the report content will come below;")) {
+                                    System.out.println("Do nothing");
+                                    high = high + 1;
+                                } else if (paragraph.getText().contains("Access Report ")) {
                                     url_line = paragraph.getText();
                                     //System.out.println("Main Iterate "+main_iterate+" url   "+url_line);
                                     url_line = conveert(url_line);
                                     System.out.println(url_line);
-                                } else if ((main_iterate == 15 && !paragraph.getText().contains("Access Report ") || (main_iterate == 14 && doo && !paragraph.getText().contains("Access Report ")))) {  //18 , 17
+                                } else if ((main_iterate == high && !paragraph.getText().contains("Access Report ") || (main_iterate == high && doo && !paragraph.getText().contains("Access Report ")))) {  //18 , 17
                                     first = paragraph.getText();
-                                } else if (main_iterate >= 14) {//17
+                                } else if (main_iterate >= high) {//17
                                     if (paragraph.getText().contains("Purchase this premium research report at")) {
                                         String a = paragraph.getText();
                                         System.out.println("full    " + a);
@@ -624,14 +648,15 @@ String conveert(String main_content) {
                         }
                         System.out.println("----------------------------------------------------------------");
                         main_content = first + "\n \n" + url_line + "\n" + remaining + "\n \n" + query;
+
                         //     System.out.println(main_content);
+                  //      driver.findElement(By.xpath("//button[@class ='wp-switch-editor switch-tmce']")).click();
 
                         driver.findElement(By.name("post_title")).sendKeys(title);
                         WebElement element;
 
-                        driver.findElement(By.xpath("//button[@class ='wp-switch-editor switch-html']")).click();
-
                         element = driver.findElement(By.xpath("//textarea[@name='content']"));
+    //                    element = driver.findElement(By.xpath("//iframe[@id = 'content_ifr']"));
                         ((JavascriptExecutor) driver).executeScript("arguments[0].value = arguments[1];", element,
                                 main_content);
 
