@@ -122,7 +122,7 @@ public class newammendment extends javax.swing.JFrame {
 
         jLabel7.setText("URL");
 
-        url.setText("https://thetajphotography.in/dummy2/wp-admin/post-new.php");
+        url.setText("http://localhost/wordpress-5.2.2/wp-admin/post-new.php");
         url.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 urlActionPerformed(evt);
@@ -443,6 +443,8 @@ String conveert(String main_content) {
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.get(url.getText());
+         
+
         int k = 1;
         int st = Integer.parseInt(starting.getText());
         try {
@@ -454,6 +456,7 @@ String conveert(String main_content) {
             driver.findElement(By.name("log")).sendKeys(mail.getText());
             driver.findElement(By.name("pwd")).sendKeys(pass.getText());
             driver.findElement(By.name("wp-submit")).click();
+            driver.findElement(By.xpath("//button[@id ='content-tmce']")).click();
             int coun = 0;
             int ct = 0;
             if (count.getText().contains("All")) {
@@ -650,11 +653,15 @@ String conveert(String main_content) {
                         main_content = first + "\n \n" + url_line + "\n" + remaining + "\n \n" + query;
 
                         //     System.out.println(main_content);
-                  //      driver.findElement(By.xpath("//button[@class ='wp-switch-editor switch-tmce']")).click();
 
                         driver.findElement(By.name("post_title")).sendKeys(title);
                         WebElement element;
-
+                 //       driver.findElement(By.tagName("iframe")).sendKeys("Fahad");
+                 driver.switchTo().frame(driver.findElement(By.id("content_ifr")));
+//do your stuff
+    driver.findElement(By.xpath("html/body/p")).sendKeys(main_content);
+driver.switchTo().defaultContent();
+                 
                         element = driver.findElement(By.xpath("//textarea[@name='content']"));
     //                    element = driver.findElement(By.xpath("//iframe[@id = 'content_ifr']"));
                         ((JavascriptExecutor) driver).executeScript("arguments[0].value = arguments[1];", element,

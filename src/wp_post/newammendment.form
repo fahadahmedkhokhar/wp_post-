@@ -287,7 +287,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="url">
           <Properties>
-            <Property name="text" type="java.lang.String" value="https://thetajphotography.in/dummy2/wp-admin/post-new.php"/>
+            <Property name="text" type="java.lang.String" value="http://localhost/wordpress-5.2.2/wp-admin/post-new.php"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="urlActionPerformed"/>
